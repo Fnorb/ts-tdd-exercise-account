@@ -24,4 +24,25 @@ describe("Account", () => {
       "Deposit must be greater than zero"
     );
   });
+
+  it("rejects withdrawals that would lead to a negative balance", () => {
+    const account = new Account();
+    account.deposit(10);
+    expect(() => account.withdraw(20.2)).toThrow(
+      "Negative balance not allowed"
+    );
+  });
+
+  it("withdraws correctly from existing balance", () => {
+    const account = new Account();
+    account.deposit(100);
+    expect(account.withdraw(30.2)).toBe(69.8);
+  });
+
+  it("rejects withdrawals of values equal or lower than zero", () => {
+    const account = new Account();
+    expect(() => account.withdraw(0)).toThrow(
+      "Withdraw must be greater than zero"
+    );
+  });
 });
