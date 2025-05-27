@@ -42,7 +42,7 @@ describe("Account", () => {
   it("rejects withdrawals of values equal or lower than zero", () => {
     const account = new Account();
     expect(() => account.withdraw(0)).toThrow(
-      "Withdraw must be greater than zero"
+      "Withdrawal must be greater than zero"
     );
   });
 });
