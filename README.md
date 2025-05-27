@@ -8,7 +8,6 @@ This project demonstrates how to build a simple account system using the princip
 
 ## 🧩 Features (planned / partially implemented)
 
-- ✅ Create an account
 - ✅ View current balance
 - ✅ Deposit money
 - ✅ Withdraw money (with sufficient balance check)
