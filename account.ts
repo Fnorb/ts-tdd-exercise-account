@@ -2,7 +2,7 @@ export class Account {
   private balance: number = 0;
   private transactionHistory: { date: Date; amount: number }[] = [];
   private dailyWithdrawalLimit: number = 1000;
-  private date: Date = new Date();
+  private date: Date = new Date(); // can be manually set for testing purposes
 
   getBalance(): number {
     return this.balance;
@@ -24,6 +24,8 @@ export class Account {
     if (this.balance - amount < 0) {
       throw new Error("Negative balance not allowed");
     }
+
+    // Ensure that the sum of todays withdrawals don't exceed the limit.
     if (
       this.getWithdrawalSumFor(this.date) + amount >
       this.dailyWithdrawalLimit
@@ -35,6 +37,11 @@ export class Account {
     return this.balance;
   }
 
+  /**
+   * Calculates and returns the total amount withdrawn on a given date.
+   * @param date The specific date to calculate the withdrawals for.
+   * @returns
+   */
   getWithdrawalSumFor(date: Date): number {
     return this.transactionHistory
       .filter(
@@ -43,6 +50,10 @@ export class Account {
       .reduce((sum, t) => sum + Math.abs(t.amount), 0);
   }
 
+  /**
+   * Test helper: overrides the current date. Used to simulate specific dates in tests.
+   * @param date The simulated current date.
+   */
   setDateForTest(date: Date): void {
     this.date = date;
   }
