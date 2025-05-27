@@ -7,18 +7,18 @@ describe("Account", () => {
     expect(balance).toBeTypeOf("number");
   });
 
-  it("deposit adds correctly to an empty account", () => {
+  it("deposits correctly to an empty account", () => {
     const account = new Account();
     expect(account.deposit(50)).toBe(50);
   });
 
-  it("deposit adds correctly to existing balance", () => {
+  it("deposits correctly to existing balance", () => {
     const account = new Account();
     account.deposit(40);
     expect(account.deposit(30.5)).toBe(70.5);
   });
 
-  it("deposit refuses values equal or lower than zero", () => {
+  it("rejects deposits of values equal or lower than zero", () => {
     const account = new Account();
     expect(() => account.deposit(0)).toThrow(
       "Deposit must be greater than zero"
