@@ -48,13 +48,14 @@ describe("Account", () => {
 
   it("allows withdrawals amounting to less than or equal to 1000 daily total", () => {
     const account = new Account();
-    expect(account.withdraw(400)).toBeTypeOf("number");
+    account.deposit(2000);
     expect(account.withdraw(400)).toBeTypeOf("number");
     expect(account.withdraw(400)).toBeTypeOf("number");
   });
 
   it("rejects withdrawals amounting to more than 1000 daily total", () => {
     const account = new Account();
+    account.deposit(2000);
     expect(account.withdraw(400)).toBeTypeOf("number");
     expect(account.withdraw(400)).toBeTypeOf("number");
     expect(() => account.withdraw(400)).toThrow("Daily limit reached");
@@ -62,6 +63,7 @@ describe("Account", () => {
 
   it("allows withdrawals amounting to more than 1000 if spread out amongst several days", () => {
     const account = new Account();
+    account.deposit(2000);
     account.setDateForTest(new Date("2025-01-01"));
     expect(account.withdraw(400)).toBeTypeOf("number");
     expect(account.withdraw(400)).toBeTypeOf("number");
