@@ -11,7 +11,7 @@ This project demonstrates how to build a simple account system using the princip
 - ✅ View current balance
 - ✅ Deposit money
 - ✅ Withdraw money (with sufficient balance check)
-- 🔄 Daily withdrawal limit (e.g., max 1000€)
+- ✅ Daily withdrawal limit (e.g., max 1000€)
 - 🔄 Track transaction history
 - 🧪 100% test coverage with Vitest
 - 🚧 Designed for easy extensibility (e.g. transfers, interest, etc.)
